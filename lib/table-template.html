@@ -1,6 +1,6 @@
 <div class="VueTables VueTables--[[source]]">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col s12 l5">
       <div v-if="!options.filterByColumn && options.filterable" class="form-group form-inline pull-left VueTables__search">
         <label>{{display('filter')}}</label>
         <input class="form-control"
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col s12 l7">
       <div v-if="options.pagination && options.pagination.dropdown && totalPages>0"
         class="form-group form-inline pull-right VueTables__dropdown-pagination">
         <label>{{display('page')}}</label>
@@ -33,8 +33,8 @@
 </div>
 </div>
 
-<div class="VueTables__table-wrapper" v-bind:class="options.wrapperClasses">
-  <table class="VueTables__table table" v-bind:class="options.skin">
+<div class="VueTables__table-wrapper row" v-bind:class="options.wrapperClasses">
+  <table class="VueTables__table table s12" v-bind:class="options.skin">
     <thead>
       <tr v-el:headings>
        <th @click="orderByColumn(column)"
@@ -102,18 +102,22 @@
 </table>
 </div>
 
-<pagination
-v-ref:pagination
-v-if="options.pagination && !options.pagination.dropdown"
-:for="id"
-:records="count"
-:per-page="parseInt(limit)"
-:chunk="options.pagination.chunk"
-:count-text="options.texts.count">
-</pagination>
+<div class="row">
+  <div class="col s12">
+    <pagination
+    v-ref:pagination
+    v-if="options.pagination && !options.pagination.dropdown"
+    :for="id"
+    :records="count"
+    :per-page="parseInt(limit)"
+    :chunk="options.pagination.chunk"
+    :count-text="options.texts.count">
+    </pagination>
+  </div>
 
-<div v-if="count>0 && options.pagination.dropdown" class="VuePagination">
-  <p class="VuePagination__count">{{display('count', count)}}</p>
+  <div v-if="count>0 && options.pagination.dropdown" class="VuePagination col s12">
+    <p class="VuePagination__count">{{display('count', count)}}</p>
+  </div>
 </div>
 
 </div>
